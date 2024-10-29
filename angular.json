@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gerenciador_tarefas": {
+    "config-angular_bootstrap": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gerenciador_tarefas",
+            "outputPath": "dist/config-angular_bootstrap",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -21,15 +21,27 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            {
+              "glob": "**/*",
+              "input": "src/assets",
+              "output": "/assets"
+            },
+            {
+              "glob": "favicon.ico",
+              "input": "src",
+              "output": "/"
+            }
+          ],
+          "styles": [
+            "node_modules/bootstrap/dist/css/bootstrap.css",
+            "src/styles.css"
+          ],
+          "scripts": [
+            "node_modules/jquery/dist/jquery.js",
+            "node_modules/@popperjs/core/dist/umd/popper.js",
+            "node_modules/bootstrap/dist/js/bootstrap.js"
+          ]
+
           },
           "configurations": {
             "production": {
@@ -59,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gerenciador_tarefas:build:production"
+              "buildTarget": "config-angular_bootstrap:build:production"
             },
             "development": {
-              "buildTarget": "gerenciador_tarefas:build:development"
+              "buildTarget": "config-angular_bootstrap:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
